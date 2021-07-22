@@ -1,0 +1,8 @@
+{
+  "name": "@namespace/pkg2",
+  "version": "1.0.0",
+  "author": "Pierre Criulanscy",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {}
+}

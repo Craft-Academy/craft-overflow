@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./packages",
+    "types": [
+      "node",
+      "jest"
+    ],
+    "paths": {
+      "@namespace/pkg1/*": [
+        "pkg1/src/*"
+      ],
+      "@namespace/pgk2/*": [
+        "pkg2/src/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [],
+  "references": [
+    {
+      "path": "packages/pkg1"
+    },
+    {
+      "path": "packages/pkg2"
+    }
+  ]
+}
