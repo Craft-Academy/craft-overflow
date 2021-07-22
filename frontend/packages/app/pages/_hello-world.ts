@@ -1,0 +1,1 @@
+export const helloWorldString: string = 'Hello from core';

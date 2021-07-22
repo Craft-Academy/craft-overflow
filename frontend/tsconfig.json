@@ -12,22 +12,17 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./packages",
-    "types": [
-      "node",
-      "jest"
-    ],
+    "types": ["node", "jest"],
     "paths": {
-      "@namespace/pkg1/*": [
-        "pkg1/src/*"
-      ],
-      "@namespace/pgk2/*": [
-        "pkg2/src/*"
-      ]
+      "@frontend/app/*": ["app/src/*"],
+      "@frontend/core/*": ["core/src/*"]
     }
   },
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "packages/app"
+    }
+  ]
 }
