@@ -10,31 +10,8 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": "./packages",
-    "types": [
-      "node",
-      "jest"
-    ],
-    "paths": {
-      "@namespace/pkg1/*": [
-        "pkg1/src/*"
-      ],
-      "@namespace/pgk2/*": [
-        "pkg2/src/*"
-      ]
-    }
+    "forceConsistentCasingInFileNames": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "files": [],
-  "references": [
-    {
-      "path": "packages/pkg1"
-    },
-    {
-      "path": "packages/pkg2"
-    }
-  ]
+  "exclude": ["node_modules"],
+  "include": ["./src"]
 }

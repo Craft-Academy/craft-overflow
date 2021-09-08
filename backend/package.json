@@ -1,22 +1,16 @@
 {
-  "name": "root",
+  "name": "backend",
   "version": "1.0.0",
   "main": "dist/index.js",
   "author": "Pierre Criulanscy",
   "license": "MIT",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
   "scripts": {
-    "prepare": "node ./configure-references.js",
     "build": "tsc",
     "test": "yarn jest"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27.0.1",
     "eslint": "^7.30.0",
     "is-ci": "2.0.0",
     "jest": "^27.0.6",
