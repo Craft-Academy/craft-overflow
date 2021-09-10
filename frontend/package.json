@@ -10,6 +10,7 @@
     "test:core:integration": "jest --config=src/core/jest.integration.config.js"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
