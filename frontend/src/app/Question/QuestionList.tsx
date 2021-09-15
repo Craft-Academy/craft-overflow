@@ -1,14 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectAllQuestions } from '../../core/question/selectors';
 
-interface QuestionListProps {
-  questions?: Array<{
-    id: string;
-    text: string;
-  }>;
-}
-
-export const QuestionList: React.FC<QuestionListProps> = ({ questions }) => {
-  if (questions) {
+export const QuestionList: React.FC = () => {
+  const { questions } = useSelector(selectAllQuestions);
+  if (questions.length > 0) {
     return (
       <ul>
         {questions.map((q) => (

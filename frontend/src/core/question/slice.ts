@@ -4,11 +4,11 @@ import { Question } from './entities/question';
 
 export const questionsAdapter = createEntityAdapter<Question>();
 
-questionsAdapter.getInitialState();
+export const questionsInitialState = questionsAdapter.getInitialState();
 
 export const questionsSlice = createSlice({
   name: 'questions',
-  initialState: questionsAdapter.getInitialState(),
+  initialState: questionsInitialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(retrieveQuestionList.fulfilled, (state, action) => {

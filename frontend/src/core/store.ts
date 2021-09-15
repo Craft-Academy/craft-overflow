@@ -8,7 +8,12 @@ const rootReducer = combineReducers({
 
 export type RootState = ReturnType<typeof rootReducer>;
 
-export const createStore = ({ questionListQuery }: { questionListQuery: QuestionListQuery }) => {
+export type StoreProps = {
+  questionListQuery: QuestionListQuery;
+  preloadedState?: RootState;
+};
+
+export const createStore = ({ questionListQuery, preloadedState }: StoreProps) => {
   const store = configureStore({
     reducer: combineReducers({
       [questionsSlice.name]: questionsSlice.reducer,
@@ -21,6 +26,7 @@ export const createStore = ({ questionListQuery }: { questionListQuery: Question
           },
         },
       }),
+    preloadedState,
   });
 
   return store;
