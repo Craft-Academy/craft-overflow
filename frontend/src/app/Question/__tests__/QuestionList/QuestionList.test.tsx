@@ -1,8 +1,3 @@
-import React from 'react';
-import { screen, render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { QuestionList } from '../../QuestionList';
-import { createTestStore } from '../../../../core/test-store';
 import { QuestionListSUT } from './sut-builder';
 
 describe('QuestionList', () => {

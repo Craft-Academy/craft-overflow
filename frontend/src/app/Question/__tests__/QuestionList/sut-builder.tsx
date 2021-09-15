@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { createTestStore } from '../../../../core/test-store';
 import { Provider } from 'react-redux';
 import { QuestionList } from '../../QuestionList';
@@ -58,8 +58,8 @@ export const QuestionListSUT = (props: SUTProps = {}) => {
           expect(screen.queryByRole('progressbar')).toHaveTextContent(/loading.../i);
         },
         async expectToEventuallyContainQuestions(questionsText: Array<string>) {
+          await waitFor(() => expect(screen.queryByRole('progressbar')).not.toBeInTheDocument());
           const questions = screen.queryAllByRole('listitem');
-          expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
           expect(questions).toHaveLength(questionsText.length);
           questionsText.forEach((questionText, index) => {
             expect(questions[index]).toHaveTextContent(questionText);

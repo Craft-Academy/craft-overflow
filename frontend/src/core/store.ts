@@ -31,3 +31,5 @@ export const createStore = ({ questionListQuery, preloadedState }: StoreProps) =
 
   return store;
 };
+
+export type AppDispatch = ReturnType<typeof createStore>['dispatch'];

@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../useAppDispatch';
 import { selectAllQuestions } from '../../core/question/selectors';
+import { useCases } from '../../core/question';
 
 export const QuestionList: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const { questions } = useSelector(selectAllQuestions);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(useCases.retrieveQuestionList()).then(() => setIsLoading(false));
+  }, [dispatch, setIsLoading]);
+
   if (questions.length > 0) {
     return (
       <ul>
@@ -15,7 +24,7 @@ export const QuestionList: React.FC = () => {
   }
   return (
     <>
-      <div role="progressbar">Loading...</div>
+      {isLoading && <div role="progressbar">Loading...</div>}
       <p>no questions yet</p>
     </>
   );
