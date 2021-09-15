@@ -3,9 +3,14 @@ import { render, screen } from '@testing-library/react';
 import { createTestStore } from '../../../../core/test-store';
 import { Provider } from 'react-redux';
 import { QuestionList } from '../../QuestionList';
+import { createInMemoryQuestionListQuery } from '../../../../core/question/adapters/question-list-query';
 
 interface SUTProps {
   questions?: Array<{
+    id: string;
+    text: string;
+  }>;
+  questionsToBeLoaded?: Array<{
     id: string;
     text: string;
   }>;
@@ -25,9 +30,17 @@ export const QuestionListSUT = (props: SUTProps = {}) => {
         questions,
       });
     },
+    withQuestionsToBeLoaded(questionsToBeLoaded: SUTProps['questionsToBeLoaded']) {
+      return QuestionListSUT({
+        ...props,
+        questionsToBeLoaded,
+      });
+    },
     build() {
+      const questionListQuery = createInMemoryQuestionListQuery({ existingQuestions: props.questionsToBeLoaded });
       const store = createTestStore({
         existingQuestions: props.questions || [],
+        questionListQuery,
       });
 
       return {
@@ -41,8 +54,12 @@ export const QuestionListSUT = (props: SUTProps = {}) => {
         expectToNotHaveAnyQuestionDisplayed() {
           expect(screen.queryByText(/no questions yet/i)).toBeInTheDocument();
         },
-        expectToContainQuestions(questionsText: Array<string>) {
+        expectQuestionsToBeLoading() {
+          expect(screen.queryByRole('progressbar')).toHaveTextContent(/loading.../i);
+        },
+        async expectToEventuallyContainQuestions(questionsText: Array<string>) {
           const questions = screen.queryAllByRole('listitem');
+          expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
           expect(questions).toHaveLength(questionsText.length);
           questionsText.forEach((questionText, index) => {
             expect(questions[index]).toHaveTextContent(questionText);

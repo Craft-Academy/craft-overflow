@@ -13,5 +13,10 @@ export const QuestionList: React.FC = () => {
       </ul>
     );
   }
-  return <>no questions yet</>;
+  return (
+    <>
+      <div role="progressbar">Loading...</div>
+      <p>no questions yet</p>
+    </>
+  );
 };
