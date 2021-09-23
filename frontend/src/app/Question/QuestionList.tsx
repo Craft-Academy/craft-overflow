@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../useAppDispatch';
 import { selectAllQuestions } from '../../core/question/selectors';
 import { useCases } from '../../core/question';
+
+const Loading: React.FC = () => (
+  <CircularProgress isIndeterminate>
+    <CircularProgressLabel>Loading...</CircularProgressLabel>
+  </CircularProgress>
+);
 
 export const QuestionList: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +31,7 @@ export const QuestionList: React.FC = () => {
   }
   return (
     <>
-      {isLoading && <div role="progressbar">Loading...</div>}
+      {isLoading && <Loading />}
       <p>no questions yet</p>
     </>
   );
