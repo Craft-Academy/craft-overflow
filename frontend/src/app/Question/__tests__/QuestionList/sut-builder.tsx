@@ -59,8 +59,8 @@ export const QuestionListSUT = (props: SUTProps = {}) => {
         },
         async expectToEventuallyContainQuestions(questionsText: Array<string>) {
           await waitFor(() => expect(screen.queryByRole('progressbar')).not.toBeInTheDocument());
-          const questions = screen.queryAllByRole('listitem');
-          expect(questions).toHaveLength(questionsText.length);
+          await waitFor(() => expect(screen.queryAllByRole('listitem')).toHaveLength(2));
+          const questions = screen.getAllByRole('listitem');
           questionsText.forEach((questionText, index) => {
             expect(questions[index]).toHaveTextContent(questionText);
           });
