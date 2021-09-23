@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { createTestStore } from '../../../../core/test-store';
 import { Provider } from 'react-redux';
+import { ChakraProvider } from '@chakra-ui/react';
 import { QuestionList } from '../../QuestionList';
 import { createInMemoryQuestionListQuery } from '../../../../core/question/adapters/question-list-query';
 
@@ -47,7 +48,9 @@ export const QuestionListSUT = (props: SUTProps = {}) => {
         render() {
           return render(
             <Provider store={store}>
-              <QuestionList />
+              <ChakraProvider>
+                <QuestionList />
+              </ChakraProvider>
             </Provider>
           );
         },
