@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { ChakraProvider } from '@chakra-ui/react';
 import { createInMemoryQuestionListQuery } from '../core/question/adapters/question-list-query';
 import { createStore } from '../core/store';
+import { Layout } from './UI/Layout';
 import { QuestionList } from './Question';
 
 const store = createStore({
@@ -29,7 +30,9 @@ const App = () => {
   return (
     <Provider store={store}>
       <ChakraProvider>
-        <QuestionList />
+        <Layout>
+          <QuestionList />
+        </Layout>
       </ChakraProvider>
     </Provider>
   );
