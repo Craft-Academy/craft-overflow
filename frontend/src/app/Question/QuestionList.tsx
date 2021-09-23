@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react';
+import { CircularProgress, CircularProgressLabel, List, Heading, ListItem } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../useAppDispatch';
 import { selectAllQuestions } from '../../core/question/selectors';
@@ -22,11 +22,15 @@ export const QuestionList: React.FC = () => {
 
   if (questions.length > 0) {
     return (
-      <ul>
+      <List>
         {questions.map((q) => (
-          <li key={q.id}>{q.text}</li>
+          <ListItem key={q.id} mb={2}>
+            <Heading as="h3" size="md" fontWeight="normal">
+              {q.text}
+            </Heading>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     );
   }
   return (
