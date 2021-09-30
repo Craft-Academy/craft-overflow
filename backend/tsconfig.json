@@ -1,17 +1,16 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "composite": true,
-    "target": "es6",
+    "declaration": true,
     "module": "commonjs",
     "moduleResolution": "node",
+    "noImplicitReturns": true,
+    "outDir": "dist",
+    "sourceMap": true,
     "strict": true,
-    "declaration": true,
-    "declarationMap": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "target": "es2017"
   },
-  "exclude": ["node_modules"],
-  "include": ["./src"]
+  "compileOnSave": true,
+  "include": ["./index.ts", "./src"]
 }
